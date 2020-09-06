@@ -1,0 +1,54 @@
+package poly.service.impl;
+
+import javax.annotation.Resource;
+
+import org.apache.log4j.Logger;
+import org.jsoup.nodes.Document;
+import org.springframework.stereotype.Service;
+
+import poly.persistance.mapper.IMovieMapper;
+import poly.service.IMovieService;
+
+@Service("MovieService")
+public class MovieService implements IMovieService{
+	
+	@Resource(name="MovieMapper")
+	private IMovieMapper movieMapper;
+
+	// 로그 파일 생성 및 로그 출력을 위한 Log4j 프레임워크의 자바 객체
+	private Logger log = Logger.getLogger(this.getClass());
+	
+	/**
+	 * JSOUP 라이브러리를 통한 CGV 영화 순위 정보가져오기
+	 */
+	
+	@Override
+	public int getMovieInfoFromWEB() throws Exception {
+		// 로그찍기 ( 추후 찍은 로그를 통해 이함수에 접근했는지 파악하기 용이하다.)
+		log.info(this.getClass().getName() + ".getMovieInfoFromWEB start!");
+		
+		int res = 0; // 크롤링 결과 (0보다 크면 크롤링성공)
+		
+		//CGV 영화 순위 정보 가져올 사이트 주소
+		String url = "http://www.cgv.co.kr/movies/";
+		
+		// JSOUP 라이브러리를 통해 사이트 접속되면, 그사이트의 전체 HTML소스 저장할 변수
+		Document doc = null;
+		
+		// 사이트 접속(http 프로토콜만 가능, https 프로토콜은 보안상 안됨)
+		return 0;
+	}
+
+}
+
+
+
+
+
+
+
+
+
+
+
+

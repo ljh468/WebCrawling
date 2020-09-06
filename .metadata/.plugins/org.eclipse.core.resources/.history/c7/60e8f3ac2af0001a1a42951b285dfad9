@@ -1,0 +1,68 @@
+package poly.service.impl;
+
+import java.util.Iterator;
+
+import javax.annotation.Resource;
+
+import org.apache.log4j.Logger;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.springframework.stereotype.Service;
+
+import poly.persistance.mapper.IMovieMapper;
+import poly.service.IMovieService;
+
+@Service("MovieService")
+public class MovieService implements IMovieService{
+	
+	@Resource(name="MovieMapper")
+	private IMovieMapper movieMapper;
+
+	// 로그 파일 생성 및 로그 출력을 위한 Log4j 프레임워크의 자바 객체
+	private Logger log = Logger.getLogger(this.getClass());
+	
+	/**
+	 * JSOUP 라이브러리를 통한 CGV 영화 순위 정보가져오기
+	 */
+	
+	@Override
+	public int getMovieInfoFromWEB() throws Exception {
+		// 로그찍기 ( 추후 찍은 로그를 통해 이함수에 접근했는지 파악하기 용이하다.)
+		log.info(this.getClass().getName() + ".getMovieInfoFromWEB start!");
+		
+		int res = 0; // 크롤링 결과 (0보다 크면 크롤링성공)
+		
+		//CGV 영화 순위 정보 가져올 사이트 주소
+		String url = "http://www.cgv.co.kr/movies/";
+		
+		// JSOUP 라이브러리를 통해 사이트 접속되면, 그사이트의 전체 HTML소스 저장할 변수
+		Document doc = null;
+		
+		// 사이트 접속(http 프로토콜만 가능, https 프로토콜은 보안상 안됨)
+		doc = Jsoup.connect(url).get();
+		
+		// CGV 웹페이지의 전체 소스 중 일부 태그를 선택하기 위해 사용
+		// <div class="sect-movie-shart"> 이태그 내에서 있는 HTML소스만 element에 저장됨
+		Elements element = doc.select("div.sect-movie-chart");
+		
+		// Iterator을 사용하여 영화 순위 정보를 가져오기
+		// 영화순위는 기본적으로 1개 이상의 영화가 존재하기 때문에 태그의 반복이 존재할 수 밖에 없음
+		Iterator<Element> movie_rank = element.select("strong.rank").iterator(); // 영화순위
+		
+		return 0;
+	}
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
