@@ -2,17 +2,17 @@ package poly.dto;
 
 public class MovieDTO {
 	
-	private String rank_check_time;
-	private String seq;
-	private String movie_rank;
-	private String movie_nm;
-	private String movie_reserve;
-	private String score;
-	private String open_day;
-	private String reg_id;
-	private String reg_dt;
-	private String chg_id;
-	private String chg_dt;
+	private String rank_check_time; // 수집시간
+	private String seq; // 수집시간에 따른 순번
+	private String movie_rank; // 영화순위
+	private String movie_nm; // 영화이름
+	private String movie_reserve; // 예매율
+	private String score; // 점수
+	private String open_day; // 개봉일
+	private String reg_id; // 최초등록자
+	private String reg_dt; // 최초등록일
+	private String chg_id; // 최근수정자
+	private String chg_dt; // 최근수정일
 	
 	
 	public String getRank_check_time() {
