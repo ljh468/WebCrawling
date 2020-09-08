@@ -8,11 +8,11 @@
 		INSERT INTO NEWS_INFO
 			(
 				NEWS_TITLE,
-				NEWS_CONTENTS,	
+				NEWS_CONTENTS
 			)
 		VALUES(
 				#{news_title},
-				#{news_contents},
+				#{news_contents}
 		)
 	</insert>
 </mapper>

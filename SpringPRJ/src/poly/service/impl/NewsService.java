@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import poly.dto.NewsDTO;
 import poly.persistance.mapper.INewsMapper;
 import poly.service.INewsService;
+import poly.util.CmmUtil;
 
 
 @Service("NewsService")
@@ -57,8 +58,9 @@ public class NewsService implements INewsService {
 		doc = Jsoup.connect("http://www.bbc.com"+href).get();
 
 		// 뉴스의 제목
-		Elements element_title = doc.select("#main-heading");
-
+		Element element_title = doc.select("#main-heading").first();
+		String news_title = CmmUtil.nvl(element_title.text().trim().toString());
+		log.info(news_title);
 		// <div class="view_tit_byline_l"><a
 		// href="/search/list_name.php?byline=Ock+Hyun-ju">By Ock Hyun-ju</a></div>
 //		// 뉴스의 기자
@@ -66,21 +68,25 @@ public class NewsService implements INewsService {
 //		String element_author = element_authorGet.attr("a");
 //
 //		// <div class="view_tit_byline_r">Published : Aug 26, 2020 - 15:44
-//		// &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Updated : Aug 26, 2020 - 20:36</div>
+//		// &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Updated : Aug 26, 2020 - 20:36</div>z
 //		// 뉴스의 날짜
 //		Elements element_date = doc.select("dd.e1ojgjhb2");
 //		// split으로 앞의 불필요한 문자들을 삭제 후 삽입할 것.
 
 		// <div class="view_con_t"> 뉴스의 내용
 		Elements element_contents = doc.select("div.e1xue1i82");
-
+		String news_contents = CmmUtil.nvl(element_contents.next().text().trim().toString());
+		log.info(news_contents);
+		
+		
 		NewsDTO nDTO = null;
-
+		
 		// 수집된 데이터 DB에 저장
 		nDTO = new NewsDTO();
-
-		nDTO.setNews_title(element_title.toString());
-		nDTO.setNews_contents(element_contents.toString());
+		nDTO.setNews_title(news_title);	
+		nDTO.setNews_contents(news_contents);
+		
+		res += newsMapper.InsertNewsInfo(nDTO);
 		log.info("nDTO : " + nDTO.getNews_title());
 		log.info("nDTO : " + nDTO.getNews_contents());
 		log.info(this.getClass().getName() + ".getNewsInfoFromWEB end!");
@@ -89,4 +95,3 @@ public class NewsService implements INewsService {
 		return res;
 	}
 }
-
