@@ -10,7 +10,7 @@ import org.jsoup.select.Elements;
 
 public class BBC {
 
-	public static String[] crawlHerald() throws IOException {
+	public static String[] crawlbbc() throws IOException {
 
 		// 영국 bbc 주소
 		String url = "http://www.bbc.com/news/world";
