@@ -5,10 +5,17 @@ import java.security.InvalidAlgorithmParameterException;
 import java.security.InvalidKeyException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.security.spec.AlgorithmParameterSpec;
+
 
 import javax.crypto.BadPaddingException;
+import javax.crypto.Cipher;
 import javax.crypto.IllegalBlockSizeException;
 import javax.crypto.NoSuchPaddingException;
+import javax.crypto.spec.IvParameterSpec;
+import javax.crypto.spec.SecretKeySpec;
+
+import org.apache.tomcat.util.codec.binary.Base64;
 
 public class EncryptUtill {
 	
@@ -79,8 +86,30 @@ public class EncryptUtill {
 	public static String encAES128CBC(String str)
 			throws UnsupportedEncodingException, NoSuchAlgorithmException, NoSuchPaddingException,
 			InvalidKeyException, InvalidAlgorithmParameterException, IllegalBlockSizeException, BadPaddingException{
-		return new Stirng(cipher.doFinal(textByte), "UTF-8")
+		byte[] textBytes = str.getBytes("UTF-8");
+		AlgorithmParameterSpec ivSpec = new IvParameterSpec(ivBytes);
+		SecretKeySpec newKey = new SecretKeySpec(key.getBytes("UTF-8"), "AES");
+		Cipher cipher = null;
+		cipher = Cipher.getInstance("AES/CBC/PKCS5Padding");
+		cipher.init(Cipher.ENCRYPT_MODE, newKey,ivSpec);
+		return Base64.encodeBase64String(cipher.doFinal(textBytes));
 	}
 	
-	
+	/**
+	 * AES128 CBC 복호화 함수
+	 * 
+	 * 128은 암호화 키 길이를 의미함 128비트는 = 16바이트 (1바이트 = 8비트*16 = 128)
+	 */
+	public static String decAES128CBC(String str)
+			throws UnsupportedEncodingException, NoSuchAlgorithmException, NoSuchPaddingException,
+			InvalidKeyException, InvalidAlgorithmParameterException, IllegalBlockSizeException, BadPaddingException{
+			
+		byte[] textBytes = Base64.decodeBase64(str);
+		// byte[] textBytes = str.getBytes("UTF=8");
+		AlgorithmParameterSpec ivSpec = new IvParameterSpec(ivBytes);
+		SecretKeySpec newKey = new SecretKeySpec(key.getBytes("UTF-8"), "AES");
+		Cipher cipher = Cipher.getInstance("AES/CBC/PKCS5Padding");
+		cipher.init(Cipher.DECRYPT_MODE, newKey, ivSpec);
+		return new String(cipher.doFinal(textBytes), "UTF-8");
+	}
 }

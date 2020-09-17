@@ -37,4 +37,11 @@
 <fullyQualifiedTypeName name="java.security.InvalidAlgorithmParameterException"/>
 <fullyQualifiedTypeName name="javax.crypto.IllegalBlockSizeException"/>
 <fullyQualifiedTypeName name="javax.crypto.BadPaddingException"/>
+<fullyQualifiedTypeName name="javax.crypto.Cipher"/>
+<fullyQualifiedTypeName name="java.util.Base64"/>
+<fullyQualifiedTypeName name="org.apache.tomcat.util.codec.binary.Base64"/>
+<fullyQualifiedTypeName name="java.security.spec.AlgorithmParameterSpec"/>
+<fullyQualifiedTypeName name="javax.crypto.spec.IvParameterSpec"/>
+<fullyQualifiedTypeName name="javax.crypto.spec.SecretKeySpec"/>
+<fullyQualifiedTypeName name="poly.util.EncryptUtill"/>
 </qualifiedTypeNameHistroy>
