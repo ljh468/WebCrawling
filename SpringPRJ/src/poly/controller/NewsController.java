@@ -8,8 +8,10 @@ import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import poly.service.INewsService;
+import poly.util.NLPUtil;
 
 /*
  * Controller 선언해야만 Spring 프레임워크에서 Controller인지 인식 가능
@@ -42,4 +44,6 @@ public class NewsController {
 		
 		return "/news/NewsForWEB";
 	}
+	
+	
 }

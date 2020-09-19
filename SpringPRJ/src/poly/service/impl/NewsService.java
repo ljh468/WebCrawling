@@ -83,12 +83,16 @@ public class NewsService implements INewsService {
 		
 		// 수집된 데이터 DB에 저장
 		nDTO = new NewsDTO();
+		nDTO.setNews_no("1");
 		nDTO.setNews_title(news_title);	
 		nDTO.setNews_contents(news_contents);
+		nDTO.setNews_date("");
 		
 		res += newsMapper.InsertNewsInfo(nDTO);
+		log.info("nDTO : 1");
 		log.info("nDTO : " + nDTO.getNews_title());
 		log.info("nDTO : " + nDTO.getNews_contents());
+		log.info("nDTO : date");
 		log.info(this.getClass().getName() + ".getNewsInfoFromWEB end!");
 
 	

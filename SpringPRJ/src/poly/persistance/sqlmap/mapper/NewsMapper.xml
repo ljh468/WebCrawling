@@ -6,13 +6,17 @@
 
 	<insert id="InsertNewsInfo" parameterType="NewsDTO">
 		INSERT INTO NEWS_INFO
-			(
+			(	
+				NEWS_NO,
 				NEWS_TITLE,
 				NEWS_CONTENTS
+				
 			)
 		VALUES(
+				#{news_no},
 				#{news_title},
 				#{news_contents}
+				
 		)
 	</insert>
 </mapper>
