@@ -22,10 +22,9 @@ public class BBC {
 		doc = Jsoup.connect(url).get();
 
 		// 홈페이지의 메인 기사 뽑아오기
-		Element element = doc.select("a.gs-c-promo").first();
-
+		Elements elements = doc.select("a.gs-c-promo");
 		// 가운데 기사의 링크 가져오기
-		String href = element.attr("href");
+		String href = elements.attr("href");
 
 		// 기사 링크로 들어가기
 		doc = Jsoup.connect(url + href).get();
@@ -40,9 +39,9 @@ public class BBC {
 			articleSb.append(it.next().ownText());
 		}
 
-		element = doc.selectFirst("h1.main-heading");
+		elements = doc.select("h1.main-heading");
 
-		String title = element.text();
+		String title = elements.text();
 
 		return new String[] { title, articleSb.toString(), url + href };
 

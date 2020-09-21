@@ -46,7 +46,7 @@ public class NewsService implements INewsService {
 
 		// 웹 페이지 전체 소스 중 일부 태그를 선택하기 위해 사용
 		// 메인페이지의 url을 가져오기 위함
-		Element element_urlGet = doc.select("a.gs-c-promo-heading").first();
+		Elements element_urlGet = doc.select("a.gs-c-promo-heading");
 
 		// element_urlGet 소스에 href를 가져옴
 		String href = element_urlGet.attr("href");

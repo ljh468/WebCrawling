@@ -24,9 +24,9 @@ public class MailService implements IMailService{
 	// 로그 파일 생성 및 로그 출력을 위한 log4j 프레임워크의 자바 객체
 	private Logger log = Logger.getLogger(this.getClass());
 	
-	final String host = "s.m.t.p.naver.com"; // 네이버에서 제공하는 SMTP서버
+	final String host = "smtp.naver.com"; // 네이버에서 제공하는 SMTP서버
 	final String user = "data0020@naver.com"; // 본인 네이버 아이디
-	final String password = "epdlxj"; // 본인 네이버 비밀번호
+	final String password = "epdlxj20"; // 본인 네이버 비밀번호
 	
 	@Override
 	public int doSendMail(MailDTO pDTO) {
