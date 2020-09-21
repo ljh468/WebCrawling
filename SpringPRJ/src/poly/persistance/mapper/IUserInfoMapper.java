@@ -3,7 +3,7 @@ package poly.persistance.mapper;
 import config.Mapper;
 import poly.dto.UserInfoDTO;
 
-@Mapper("IUserInfoMapper")
+@Mapper("UserInfoMapper")
 public interface IUserInfoMapper {
 	
 	// 회원가입 하기(회원정보 등록하기)

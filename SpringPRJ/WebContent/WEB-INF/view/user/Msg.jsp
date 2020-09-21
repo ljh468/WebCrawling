@@ -25,6 +25,10 @@
 </script>
 </head>
 <body>
+<%if(pDTO.getUser_id()!=null) {%>
 <%=nvl(pDTO.getUser_name()) %>님의 회원가입을 축하드립니다.
+<%} else {%>
+	회원가입에 실패하셨습니다.
+<% } %>
 </body>
 </html>

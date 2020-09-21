@@ -1,5 +1,7 @@
 package poly.controller;
 
+import static poly.util.CmmUtil.nvl;
+
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -12,8 +14,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import poly.dto.UserInfoDTO;
 import poly.service.IUserInfoService;
 import poly.util.EncryptUtill;
-
-import static poly.util.CmmUtil.nvl;
 
 /* 
  * Contoroller 선언해야만 Spring 프레임워크에서 Controller인지 인식가능
@@ -99,6 +99,12 @@ public class UserInfoController {
 			pDTO.setAddr1(addr1);
 			pDTO.setAddr2(addr2);
 			
+			log.info("pDTO0 : " + pDTO.getUser_id());
+			log.info("user_name : " + pDTO.getUser_name());
+			log.info("password : " + pDTO.getPassword());
+			log.info("email : " + pDTO.getEmail());
+			log.info("addr1 : " + pDTO.getAddr1());
+			log.info("addr2 : " + pDTO.getAddr2());
 			/*
 			 * ####################################
 			 * 웹(회원정보 입력화면) 에서 받는 정보를 DTO에 저장하기 끝!!
@@ -111,6 +117,7 @@ public class UserInfoController {
 			 */
 			int res = userInfoService.inserUserInfo(pDTO);
 			
+			log.info("res : " + res);
 			if(res==1) {
 				msg = "회원가입되었습니다.";
 				

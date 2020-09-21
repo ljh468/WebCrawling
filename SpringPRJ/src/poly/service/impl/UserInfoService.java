@@ -2,6 +2,7 @@ package poly.service.impl;
 
 import javax.annotation.Resource;
 
+import org.apache.log4j.Logger;
 import org.springframework.stereotype.Service;
 
 import poly.dto.MailDTO;
@@ -14,6 +15,7 @@ import poly.util.EncryptUtill;
 
 @Service("UserInfoService")
 public class UserInfoService implements IUserInfoService{
+	private Logger log = Logger.getLogger(this.getClass());
 	
 	@Resource(name="UserInfoMapper")
 	private IUserInfoMapper userInfoMapper;
@@ -25,7 +27,7 @@ public class UserInfoService implements IUserInfoService{
 	public int inserUserInfo(UserInfoDTO pDTO) throws Exception {
 
 		// 회원가입 성공 : 1, 아이디 중복으로인한 가입취소 : 2, 기타 에러발생 :0
-		int res =0;
+		int res = 0;
 		
 		//controller에서 값이 정상적으로 못 넘어오는 경우를 대비하기 위해 사용함
 		if(pDTO == null) {
@@ -49,6 +51,7 @@ public class UserInfoService implements IUserInfoService{
 			// 회원가입
 			int success = userInfoMapper.insertUserInfo(pDTO);
 			
+			log.info("succes : " + success);
 			//db에 데이터가 등록되었다면,
 			if(success >0) {
 				res = 1;
@@ -77,9 +80,6 @@ public class UserInfoService implements IUserInfoService{
 				 * 메일 발송 로직 추가 끝 !!
 				 * #########################################
 				 */
-				
-				
-				
 				
 				
 			}else {
