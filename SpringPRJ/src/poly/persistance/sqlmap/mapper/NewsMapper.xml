@@ -19,4 +19,12 @@
 				
 		)
 	</insert>
+	<select id="getNewsInfoFromDB" resultType="NewsDTO">
+	SELECT
+		NEWS_CONTENTS
+	FROM
+		NEWS_INFO
+	WHERE
+		NEWS_NO = #{news_no} 
+	</select>
 </mapper>

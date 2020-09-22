@@ -10,7 +10,9 @@ public class NewsDTO {
 	private String news_title; // 뉴스제목
 	private String news_contents; // 뉴스내용
 	private String news_date; // 뉴스 날짜
-	
+	private String news_editor;
+	private String news_checktime;
+	private String news_seq;
 
 	public String getNews_title() {
 		return news_title;

@@ -46,7 +46,7 @@ public class NewsService implements INewsService {
 
 		// 웹 페이지 전체 소스 중 일부 태그를 선택하기 위해 사용
 		// 메인페이지의 url을 가져오기 위함
-		Elements element_urlGet = doc.select("a.gs-c-promo-heading");
+		Element element_urlGet = doc.select("a.gs-c-promo-heading").first();
 
 		// element_urlGet 소스에 href를 가져옴
 		String href = element_urlGet.attr("href");
@@ -58,7 +58,7 @@ public class NewsService implements INewsService {
 		doc = Jsoup.connect("http://www.bbc.com"+href).get();
 
 		// 뉴스의 제목
-		Element element_title = doc.select("#main-heading").first();
+		Element element_title = doc.select(".story-body__h1").first();
 		String news_title = CmmUtil.nvl(element_title.text().trim().toString());
 		log.info(news_title);
 		// <div class="view_tit_byline_l"><a
@@ -74,7 +74,7 @@ public class NewsService implements INewsService {
 //		// split으로 앞의 불필요한 문자들을 삭제 후 삽입할 것.
 
 		// <div class="view_con_t"> 뉴스의 내용
-		Elements element_contents = doc.select("div.e1xue1i82");
+		Elements element_contents = doc.select(".story-body p");
 		String news_contents = CmmUtil.nvl(element_contents.next().text().trim().toString());
 		log.info(news_contents);
 		
@@ -97,5 +97,11 @@ public class NewsService implements INewsService {
 
 	
 		return res;
+	}
+
+	@Override
+	public NewsDTO getNewsInfoFromDB(NewsDTO nDTO) {
+		
+		return newsMapper.getNewsInfoFromDB(nDTO);
 	}
 }

@@ -9,7 +9,7 @@
 		(
 			USER_ID,
 			USER_NAME,
-			PASSWORD,
+			
 			EMAIL,
 			ADDR1,
 			ADDR2,

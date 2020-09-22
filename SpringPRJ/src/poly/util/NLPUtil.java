@@ -8,13 +8,41 @@ import edu.stanford.nlp.pipeline.CoreSentence;
 import edu.stanford.nlp.pipeline.StanfordCoreNLP;
 
 public class NLPUtil {
-
-	public static void test() {
+	
+	public static Iterator<CoreSentence> sentence(String str) {
+		
+		Properties props = new Properties();
+				// nlp설정(거의 건드릴 필요 없음)
+				// tokenize 어절 나눔
+				// ssplit 단어 끊음
+				// lemma 동사원형으로 바꾸기
+		props.setProperty("annotators", "tokenize,ssplit,pos,lemma");
+		
+		props.setProperty("coref.algorithm", "neural");
+		
+		// 파이프라인
+		StanfordCoreNLP pipeline = new StanfordCoreNLP(props);
+		
+		// 분석할 문장(뉴스)가 들어갈 객체
+		CoreDocument doc = new CoreDocument(str);
+		
+		// 분석 실행
+		pipeline.annotate(doc);
+		
+		// 문장 분리 테스트
+		Iterator<CoreSentence> it = doc.sentences().iterator();
+		
+		return it;
+	}
+	
+	public static void main(String[] args) {
 		
 		// nlp설정(거의 건드릴 필요 없음)
-		// tokenize 어절 나눔
-		// ssplit 단어 끊음
-		// lemma 동사원형으로 바꾸기
+				// tokenize 어절 나눔
+				// ssplit 단어 끊음
+				// lemma 동사원형으로 바꾸기
+		
+	
 		
 		Properties props = new Properties();
 		props.setProperty("annotators", "tokenize,ssplit,pos,lemma");
@@ -22,6 +50,7 @@ public class NLPUtil {
 		
 		// 파이프라인
 		StanfordCoreNLP pipeline = new StanfordCoreNLP(props);
+		
 		
 		// 분석할 문장(뉴스)가 들어갈 객체
 		CoreDocument doc = new CoreDocument("Hello, my name is Adam. I have two sisters. I went to California");

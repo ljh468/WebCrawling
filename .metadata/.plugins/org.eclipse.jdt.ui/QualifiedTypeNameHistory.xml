@@ -19,7 +19,6 @@
 <fullyQualifiedTypeName name="javax.mail.Session"/>
 <fullyQualifiedTypeName name="javax.mail.internet.MimeMessage"/>
 <fullyQualifiedTypeName name="javax.mail.Message"/>
-<fullyQualifiedTypeName name="java.util.Iterator"/>
 <fullyQualifiedTypeName name="java.security.MessageDigest"/>
 <fullyQualifiedTypeName name="java.lang.StringBuffer"/>
 <fullyQualifiedTypeName name="java.lang.Integer"/>
@@ -41,7 +40,6 @@
 <fullyQualifiedTypeName name="poly.persistance.mapper.IUserInfoMapper"/>
 <fullyQualifiedTypeName name="org.springframework.stereotype.Controller"/>
 <fullyQualifiedTypeName name="org.apache.log4j.Logger"/>
-<fullyQualifiedTypeName name="javax.annotation.Resource"/>
 <fullyQualifiedTypeName name="poly.service.IUserInfoService"/>
 <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RequestMapping"/>
 <fullyQualifiedTypeName name="javax.servlet.http.HttpServletRequest"/>
@@ -50,4 +48,7 @@
 <fullyQualifiedTypeName name="poly.dto.UserInfoDTO"/>
 <fullyQualifiedTypeName name="poly.util.CmmUtil"/>
 <fullyQualifiedTypeName name="poly.util.EncryptUtill"/>
+<fullyQualifiedTypeName name="poly.dto.NewsDTO"/>
+<fullyQualifiedTypeName name="javax.annotation.Resource"/>
+<fullyQualifiedTypeName name="java.util.Iterator"/>
 </qualifiedTypeNameHistroy>

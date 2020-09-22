@@ -8,7 +8,7 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
-public class BBC {
+public class Webcw {
 
 	public static String[] crawlbbc() throws IOException {
 
