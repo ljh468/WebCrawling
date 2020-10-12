@@ -20,6 +20,7 @@ public class UserInfoService implements IUserInfoService{
 	@Resource(name="UserInfoMapper")
 	private IUserInfoMapper userInfoMapper;
 	
+	// 메일 발송을 위한 MailService 자바 객체 가져오기
 	@Resource(name="MailService")
 	private IMailService mailService;
 
@@ -86,6 +87,49 @@ public class UserInfoService implements IUserInfoService{
 				res = 0;
 			}
 		}
+		return res;
+	}
+	
+	/** 
+	 * 로그인을 위해 아이디와 비밀번호가 일치하는지 확인하기
+	 * @param UserInfoDTO 로그인을 위한 회원아이디, 비밀번호
+	 * @return UserInfoDTO 로그인된 회원아이디 정보
+	 */
+	@Override
+	public int getUserLoginCheck(UserInfoDTO pDTO) throws Exception {
+		
+		// 로그인 성공 : 1, 실패는 0
+		int res = 0;
+		
+		// 로그인을 위해 아이디와 비밀번호가 일치하는지 확인하기 위한 mapper 호출하기
+		UserInfoDTO rDTO = userInfoMapper.getUserLoginCheck(pDTO);
+		
+		if(rDTO == null) {
+			rDTO = new UserInfoDTO();
+		}
+		
+		/*
+		 * #######################################################
+		 *             로그인 성공 여부 체크 시작!!
+		 * #######################################################
+		 */
+		
+		/*
+		 *  userInfoMapper로 부터 SELECT 쿼리와 결과로 회원아이디를 받아왔다면, 로그인 성공!!
+		 * 
+		 *  DTO의 변수에 값이 있는지 확인하기 처리속도 측면에서 가장좋은 방법은 변수의 길이를 가져오는 것이다.
+		 *  따라서, .length() 함수를 통해 회원아이디의 글자수를 가져와 0보다 큰지 비교한다.
+		 *  0보다 크다면, 글자가 존재하는 것이기 때문에 값이 존재한다.
+		 */
+		if(CmmUtil.nvl(rDTO.getUser_id()).length()>0) {
+			res = 1;
+		}		
+		
+		/*
+		 * #######################################################
+		 *             로그인 성공 여부 체크 끝!!
+		 * #######################################################
+		 */
 		return res;
 	}
 	
