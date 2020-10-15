@@ -1,4 +1,4 @@
-package poly.controller;
+﻿package poly.controller;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -31,7 +31,7 @@ public class FoodController {
 		log.info(this.getClass().getName() + "getFoodInfoFromWEB start !!");
 		
 		int res = foodService.getFoodInfoFromWEB();
-		
+		//
 		// 크롤링 결과를 넣어주기
 		model.addAttribute("res", String.valueOf(res));
 		
