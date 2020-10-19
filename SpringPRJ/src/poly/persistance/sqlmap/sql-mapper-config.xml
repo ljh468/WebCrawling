@@ -11,5 +11,6 @@
 		<typeAlias type="poly.dto.NewsDTO" alias="NewsDTO"/>
 		<typeAlias type="poly.dto.UserInfoDTO" alias="UserInfoDTO"/>
 		<typeAlias type="poly.dto.FoodDTO" alias="FoodDTO"/>
+		<typeAlias type="poly.dto.OcrDTO" alias="OcrDTO"/>
     </typeAliases>
 </configuration>

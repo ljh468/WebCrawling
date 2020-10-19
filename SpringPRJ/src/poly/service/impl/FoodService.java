@@ -14,7 +14,6 @@ import org.jsoup.select.Elements;
 import org.springframework.stereotype.Service;
 
 import poly.dto.FoodDTO;
-import poly.dto.MovieDTO;
 import poly.persistance.mapper.IFoodMapper;
 import poly.service.IFoodService;
 import poly.util.DateUtil;
