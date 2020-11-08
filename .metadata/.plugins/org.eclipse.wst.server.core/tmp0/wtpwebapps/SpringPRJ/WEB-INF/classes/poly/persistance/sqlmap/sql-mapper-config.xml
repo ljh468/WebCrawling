@@ -12,5 +12,7 @@
 		<typeAlias type="poly.dto.UserInfoDTO" alias="UserInfoDTO"/>
 		<typeAlias type="poly.dto.FoodDTO" alias="FoodDTO"/>
 		<typeAlias type="poly.dto.OcrDTO" alias="OcrDTO"/>
+		<typeAlias type="poly.dto.NlpDTO" alias="NlpDTO"/>
+		<typeAlias type="poly.dto.AccStatDTO" alias="AccStatDTO"/>
     </typeAliases>
 </configuration>
