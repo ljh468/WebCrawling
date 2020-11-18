@@ -22,10 +22,25 @@
 			<name>ORACLE JDBC Repository</name>
 			<url>http://maven.jahia.org/maven2</url>
 		</repository>
+		
+		 <!-- 자연어처리-형태소분석기(Komoran 다운로드를 위한 레파지토리 등록) -->
+      <repository>
+         <id>jitpack.io</id>
+         <url>https://jitpack.io</url>
+      </repository>
+   
 	</repositories>
 
 	<dependencies>
-	
+		
+		
+		 <!-- Komoran 3.3.4 -->
+      <dependency>
+         <groupId>com.github.shin285</groupId>
+         <artifactId>KOMORAN</artifactId>
+         <version>3.3.4</version>
+      </dependency>
+      
 		<!-- RequestBody 사용시, JSON 변환이 안되는 경우 추가함 -->
 		<dependency>
 			<groupId>com.google.code.gson</groupId>
